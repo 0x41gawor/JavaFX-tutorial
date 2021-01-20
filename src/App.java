@@ -1,8 +1,6 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -17,31 +15,32 @@ public class App extends Application {
 
         VBox root = new VBox();
 
-        Button button = new Button("_Click me!");
-        button.setStyle("-fx-font-size: 45px");
+        MenuItem item1 = new MenuItem("Taco");
+        MenuItem item2 = new MenuItem("Burrito");
+        MenuItem item3 = new MenuItem("Cheese Enchilada");
+        MenuItem item4 = new MenuItem("Chips & Salsa");
 
-        //But with this font size button is to small to enclose whole text
-        //button.setText("Reptilians are cool");
-        //So we need to do a text wrapping
-        //button.setWrapText(true);
+        MenuButton menuButton = new MenuButton("Favourite mexican food", null, item1, item2, item3, item4);
 
-        button.setMinSize(20,20);
-        // Uncomment this the line below
-        //button.setPrefSize(300,100);
+        Label food = new Label("No food selected");
 
-        // M N E M O N I C  - shortcut buttons its when u press alt and type some letter e.g. alt + t (try it here, in Intellij)
-        button.setMnemonicParsing(true);
-        // We need to put underscore before the letter we want to be shortcut
-
-        button.setOnAction( e -> {
-            System.out.println("Button tapped");
+        item1.setOnAction(e -> {
+            food.setText("Taco");
+        });
+        item2.setOnAction(e -> {
+            food.setText("Burrito");
+        });
+        item3.setOnAction(e -> {
+            food.setText("Cheese Enchilada");
+        });
+        item4.setOnAction(e -> {
+            food.setText("Chips & Salsa");
         });
 
 
-        root.getChildren().addAll(button);
+        root.getChildren().addAll(menuButton, food);
 
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("stylesheets/styles.css");
         stage.setScene(scene);
         stage.show();
     }
