@@ -15,30 +15,23 @@ public class App extends Application {
 
         VBox root = new VBox();
 
-        MenuItem item1 = new MenuItem("Taco");
-        MenuItem item2 = new MenuItem("Burrito");
-        MenuItem item3 = new MenuItem("Cheese Enchilada");
-        MenuItem item4 = new MenuItem("Chips & Salsa");
+        ToggleButton button1 = new ToggleButton("Blue");
+        ToggleButton button2 = new ToggleButton("Pink");
+        ToggleButton button3 = new ToggleButton("Purple");
 
-        MenuButton menuButton = new MenuButton("Favourite mexican food", null, item1, item2, item3, item4);
+        ToggleGroup buttonGroup = new ToggleGroup();
+        button1.setToggleGroup(buttonGroup);
+        button2.setToggleGroup(buttonGroup);
+        button3.setToggleGroup(buttonGroup);
+        // OR  buttonGroup.getToggles().addAll(button1, button2, button3);
 
-        Label food = new Label("No food selected");
-
-        item1.setOnAction(e -> {
-            food.setText("Taco");
-        });
-        item2.setOnAction(e -> {
-            food.setText("Burrito");
-        });
-        item3.setOnAction(e -> {
-            food.setText("Cheese Enchilada");
-        });
-        item4.setOnAction(e -> {
-            food.setText("Chips & Salsa");
-        });
+        RadioButton r1 = new RadioButton("Brown");
+        RadioButton r2 = new RadioButton("Green");
+        r1.setToggleGroup(buttonGroup);
+        r2.setToggleGroup(buttonGroup);
 
 
-        root.getChildren().addAll(menuButton, food);
+        root.getChildren().addAll(button1, button2, button3, r1, r2);
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
