@@ -1,7 +1,9 @@
 import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 
@@ -9,29 +11,32 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        stage.setTitle("Episode 8 - Buttons");
+        stage.setTitle("Episode 12 - Vbox and Hbox");
         stage.setWidth(400);
         stage.setHeight(500);
 
-        VBox root = new VBox();
+        // Layout Pane, or so called Layout Manager manage the layout of child nodes on the scene.
 
-        ToggleButton button1 = new ToggleButton("Blue");
-        ToggleButton button2 = new ToggleButton("Pink");
-        ToggleButton button3 = new ToggleButton("Purple");
+        HBox root = new HBox();
+        Button b1 = new Button("One");
+        Button b2 = new Button("Two");
+        Button b3 = new Button("Three");
+        Button b4 = new Button("Four");
 
-        ToggleGroup buttonGroup = new ToggleGroup();
-        button1.setToggleGroup(buttonGroup);
-        button2.setToggleGroup(buttonGroup);
-        button3.setToggleGroup(buttonGroup);
-        // OR  buttonGroup.getToggles().addAll(button1, button2, button3);
+        // Sets amount of width [px] between each element of Hbox
+        root.setSpacing(12);
 
-        RadioButton r1 = new RadioButton("Brown");
-        RadioButton r2 = new RadioButton("Green");
-        r1.setToggleGroup(buttonGroup);
-        r2.setToggleGroup(buttonGroup);
+        // Where all the child element will be located on the root node of the Hbox
+        root.setAlignment(Pos.BOTTOM_RIGHT);
+
+        // Space in px, around the Hbox
+        root.setPadding(new Insets(10,10,10,10));
+
+        // Set a padding for a specific node
+        HBox.setMargin(b1,new Insets(50,50,50,50));
 
 
-        root.getChildren().addAll(button1, button2, button3, r1, r2);
+        root.getChildren().addAll(b1, b2, b3, b4);
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
