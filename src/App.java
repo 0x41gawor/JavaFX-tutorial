@@ -1,10 +1,13 @@
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
 
 
 public class App extends Application {
@@ -14,33 +17,27 @@ public class App extends Application {
         stage.setTitle("Episode 12 - BorderPane");
         stage.setWidth(500);
         stage.setHeight(500);
-        // Border Pane is a layout manager that allows you to layout your nodes in a five section layout
-        // As you can see in res/img/BorderPane.png
 
-        BorderPane root = new BorderPane();
+        StackPane root = new StackPane();
+        // The way StackPane works is it will put every node u pass in at the top of the stack in the center
+        // unless you told him to do otherwise
 
-        Button b1 = new Button("One");
-        Button b2 = new Button("Two");
-        Button b3 = new Button("Three");
-        Button b4 = new Button("Four");
-        Button b5 = new Button("Five");
 
-        // Normally we do smth like this but with BorderPane does not gonna work bcuz we need to tell where (in which Pane)
-        // we are placing a child node, we need to tell each child node which section it's gonna be
-        //root.getChildren().addAll(b1, b2, b3, b4, b5);
+        Label l1 = new Label("Hi dood");
+        Button b1 = new Button("Hi smack me!");
+        ImageView imageView = new ImageView("https://i.pinimg.com/564x/76/d1/01/76d101cc7408c36e6b0a1b4c15ce00e4.jpg");
 
-        // So ..
-        root.setCenter(b1);
-        root.setTop(b2);
-        root.setRight(b3);
-        root.setLeft(b4);
-        root.setBottom(b5);
+        root.getChildren().addAll(l1, b1);
+        // But with this only. Only the b1 (last node) is visible.
 
-        // If u want b2 at the center of the top use this:
-        // BorderPane.setAligment(b2, Pos.CENTER)
-        // Try also this
-        // BorderPane.setAlignment(b3, Pos.BOTTOM_CENTER);
+        // So we can do this e.g.
+        StackPane.setAlignment(b1, Pos.CENTER_LEFT);
 
+        root.getChildren().addAll(imageView,l1, b1);
+        // This will put image behind see the effect
+
+        // This way we know button won't touch the window
+        StackPane.setMargin(b1, new Insets(30));
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
