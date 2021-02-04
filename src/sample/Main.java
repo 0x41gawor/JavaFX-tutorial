@@ -14,10 +14,10 @@ public class Main  extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("res/home.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("res/calculator.fxml"));
         Scene homeScene = new Scene(root);
 
-        primaryStage.setTitle("Hello world");
+        primaryStage.setTitle("Calculator");
         primaryStage.setScene(homeScene);
         primaryStage.show();
     }

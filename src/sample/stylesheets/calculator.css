@@ -1,0 +1,15 @@
+.number-button{
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+    -fx-background-color: #4a4a4f;
+}
+.operator-button{
+    -fx-font-size: 25px;
+    -fx-background-color: #414147;
+}
+.border-pane{
+    -fx-background-color: #222226;
+}
+.titled-pane{
+    -fx-background-color: #222226;
+}
